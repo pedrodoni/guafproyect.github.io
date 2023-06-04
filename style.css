@@ -9,14 +9,16 @@ body{
   font-family: 'Geologica', sans-serif;
   text-align: center
   ;
+  
 }
 .navbar>.container, .navbar>.container-fluid, .navbar>.container-lg, .navbar>.container-md, .navbar>.container-sm, .navbar>.container-xl, .navbar>.container-xxl {
   display: flex;
   flex-wrap: inherit;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 /* Menu */
+
 .flip-card {
   background-color: transparent;
   width: 300px;
@@ -46,16 +48,18 @@ body{
 }
 .flip-card-front {
   background-image: 
-  linear-gradient(
+ /*  linear-gradient(
     45deg, #00c81b, #e16716
     );
-}
+} */
+linear-gradient(45deg, #833ab4, #fd1d1d)}
 .flip-card-front img {
   width: 220px;
   margin-top: 1rem;
 }
 .flip-card-back {
-  background-image: linear-gradient(45deg, #00c81b, #e16716);
+ /*  background-image: linear-gradient(45deg, #00c81b, #e16716); */
+ background-image: linear-gradient(45deg, #833ab4, #fd1d1d);
   color: white;
   transform: rotateY(180deg);
 }
@@ -69,4 +73,6 @@ body{
 .menu{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+
 }
