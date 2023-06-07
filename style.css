@@ -4,7 +4,7 @@
 
 /* Styles generales */
 body{
-  background-color:lightgrey;}
+  background-color:#d3d3d3;}
 .h1open{
   font-family: 'Geologica', sans-serif;
   text-align: center
@@ -75,4 +75,27 @@ linear-gradient(45deg, #833ab4, #fd1d1d)}
   justify-content: center;
   flex-wrap: wrap;
 
+}
+/* Alimentos.html */
+.produAlimentos{
+  display: flex;
+  justify-content: center;
+}
+.AlimentosDiv img{
+  width: 20rem;
+  border-radius: 0.7rem;
+  margin: 1rem;
+}
+.AlimentosDiv{
+  justify-content: center;
+  background-image: linear-gradient(45deg, #833ab4, #fd1d1d);
+  border-radius: 3rem;
+  margin: 0.5rem;
+  box-shadow: 0.4rem 0.4rem 0.4rem grey;
+  text-align: center;
+  align-items: center;
+}
+.AlimentosDiv p{
+  color: white;
+  font-size: 1.3rem;
 }
