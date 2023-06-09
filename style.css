@@ -81,24 +81,36 @@ linear-gradient(45deg, #833ab4, #fd1d1d)}
   display: flex;
   justify-content: center;
 }
-.AlimentosDiv img{
+#AlimentosDiv img{
   width: 20rem;
   border-radius: 0.7rem;
   margin: 1rem;
 }
-.AlimentosDiv{
+#AlimentosDiv{
   justify-content: center;
   background-image: linear-gradient(45deg, #833ab4, #fd1d1d);
-  border-radius: 3rem;
+  border-radius: 25% 3%;
   margin: 0.5rem;
   box-shadow: 0.4rem 0.4rem 0.4rem grey;
   text-align: center;
   align-items: center;
 }
-.AlimentosDiv p{
+#AlimentosDiv p{
   color: white;
   font-size: 1.3rem;
 }
-a{
+button{
   margin-bottom: 1rem;
+}
+.Aparienciacart{
+  width: 100%;
+  height: 20px;
+  background-image: linear-gradient(45deg, #833ab4, #fd1d1d);
+  margin-top: 300px;
+}
+.prox{
+  display: flex;
+  margin:20% 20%;
+  justify-content: center;
+  font-family: 'Geologica', sans-serif;
 }

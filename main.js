@@ -1,42 +1,70 @@
-let alimentos = [
-    {
-        id: 1,
-        nombre: "Guaf Alimento balanceado 10 kg",
-        precio: 3500,
-        imagen: "../images/guaf.png"
-    },
-    {
-        id: 2,
-        nombre: "Dog Chow alimento 10kg",
-        precio: 6500,
-        imagen: "../images/dogChow.png"
-    },
-    {
-        id: 3,
-        nombre: "Dog Selection alimento 10kg",
-        precio: 7600,
-        imagen: "../images/dogSelection.png"
-    }
-];
-const exhibir = document.getElementById("produAlimentos")
-alimentos.forEach((alimento, indice) => { 
-    let show = document.createElement("div")
-    show.classList.add("GuafAlimento" , "AlimentosDiv")
-    show.innerHTML = 
-    ` <img src="${alimento.imagen}" alt="Guaf Alimento">
-    <div>
-    <p class="tituloAlimentos"> ${alimento.nombre}</p>
-    <p class="Precios">$${alimento.precio}</p> 
-    <a href="#carrito" class="btn btn-outline-light" onClick="AddCarrito(${indice})">Añadir al carrito</a>
-    </div>`
-    exhibir.appendChild(show)
-  
-});
+const contenido = document.getElementById("produAlimentos")
 
-const AddCarrito= ()=>{
+let carrito = [];
+
+
+
+alimentos.forEach((alimento, indice)=>{
+    let balanceados = document.createElement("div");
+    balanceados.setAttribute('id','AlimentosDiv','GuafAlimento')
+    balanceados.innerHTML = `
+                    <div class= "cardCarro">
+                    <img src="${alimento.imagen}" alt="${alimento.nombre}">
+                    <div class="detalles-carro">
+                    <p class="tituloAlimentos"> ${alimento.nombre}</p>
+                    <p class="Precios">$${alimento.precio}</p> 
+                    <button class="botoncomprar btn btn-outline-light" onClick='comprar(${indice});alert();'>Comprar</button>
+                    </div>
+                    </div>
+    
+    `
+   contenido.appendChild(balanceados)
+})
+ const comprar = (indice)=>{
+    
+    const elegido = carrito.findIndex((repetido)=>{
+        return repetido.id === alimentos[indice].id
+        
+    })
+    if (elegido === -1){
+        const alimentoAdd = alimentos[indice];
+        alimentoAdd.cantidad = 1
+        carrito.push(alimentoAdd)
+        /* aparicion */()
+    }
+    else{
+        carrito[elegido].cantidad +=1;
+        /* aparicion() */
+    }
+}
+const alert= ()=>{
     Swal.fire(
         'Buena decision!',
         'Has añadido este producto a tu carrito!',
         'success'
     )
 }
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
