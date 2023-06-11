@@ -68,7 +68,7 @@ const freshCarrito=()=>{
 
       displayCarrito.appendChild(alimentoBalanceado)
     })
-   
+    total.innerText = carrito.reduce((acc, aliment)=> acc + aliment.precio, 0)
 }
 const eliminar = (alimentID)=>{
     const D = alimentos.find((aliment)=> aliment.id === alimentID)
