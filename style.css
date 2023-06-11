@@ -109,12 +109,51 @@ button{
   justify-content: center;
   font-family: 'Geologica', sans-serif;
 }
-.aparienciaCarrito {
-  border-left: 5px solid lightblue;
-  border-bottom-left-radius: 3px;
-  border-top-left-radius: 3px;
-  margin: 5px 0;
-  padding: 5px 10px;
+
+#cart{
+  padding-top: 10rem;
   display: flex;
+  justify-content: center;
+}
+.logo-modal{
+  width: 25%;
+  
+}
+.modal-footer{
+  justify-content: space-around;
+}
+.details{
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  color: wheat;
+  font-family: 'Geologica', sans-serif;
+  
+
+}
+.details h3{
+  font-size: 1.2rem;  
+}
+.details h4 {
+  font-size: 1.5rem;
+}
+.details h5{
+  font-size: 0.9rem;
+}
+.imageCart{
+  width: 30%;
+}
+.delete{
+  background-color: #d3d3d3;
+  margin-right: 3%;
+  border-radius: 25%;
+  background-image:linear-gradient(45deg, #833ab4, #fd1d1d); 
+  border: 0px;
+}
+
+#aparienciaCarrito{
+  background-image:linear-gradient(45deg, #833ab4, #fd1d1d);
+  border-radius: 7% 60% 5% 5%;
+  margin: 5% 0% 5% 0%;
+  
 }
