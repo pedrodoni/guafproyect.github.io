@@ -1,6 +1,6 @@
 
 let carrito = []
-carrito = JSON.parse(localStorage.getItem('carrito'))
+
 const contieneProductos = document.getElementById("produAlimentos")
 const clearCart = document.getElementById("limpiar")
 const displayCarrito = document.getElementById("aparienciaCart")
