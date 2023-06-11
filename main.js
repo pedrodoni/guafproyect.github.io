@@ -1,6 +1,8 @@
 let carrito = []
 const contieneProductos = document.getElementById("produAlimentos")
-const contieneCarrito = document.getElementById("aparienciaCart")
+const clearCart = document.getElementById("limpiar")
+const displayCarrito = document.getElementById("aparienciaCart")
+const total = document.getElementById("totalCart")
 const alert= ()=>{
     Swal.fire(
         'Buena decision!',
@@ -8,6 +10,10 @@ const alert= ()=>{
         'success'
     )
 }
+clearCart.addEventListener('click',()=>{
+    carrito.length = 0
+    freshCarrito()
+})
 
 alimentos.forEach((alimento)=>{
     let alimentoBalanceado = document.createElement("div");
@@ -32,17 +38,24 @@ alimentos.forEach((alimento)=>{
 const addCarrito = (alimentId) => {
     const D = alimentos.find((aliment)=> aliment.id === alimentId)
     carrito.push(D)
-    addCarrito()
-    console.log(carrito)
+    freshCarrito()
+   
+    
 }
+
 const freshCarrito=()=>{
-    carrito.forEach((alimento)=>{
+    displayCarrito.innerHTML = ""
+
+
+    carrito.forEach((aliment)=>{
         const alimentoBalanceado = document.createElement('div')
         alimentoBalanceado.setAttribute('id','aparienciaCarrito')
         alimentoBalanceado.innerHTML=`
-        <h3>${alimento.nombre}</h3>
-        <h4>${alimento.precio}</h4>
-        <button onclick= "eliminar(${alimento.id})" class="delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <img src="${aliment.imagen}" alt="${aliment.nombre}">
+        <h3>${aliment.nombre}</h3>
+        <h4>${aliment.precio}</h4>
+        <h5>Cantidad: ${aliment.cantidad}</h5>
+        <button onclick= "eliminar(${aliment.id})" class="delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#6f32be" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M3 3l18 18" />
         <path d="M4 7h3m4 0h9" />
@@ -53,6 +66,14 @@ const freshCarrito=()=>{
         <path d="M9 5v-1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
       </svg></button>`
 
-      contieneCarrito.appendChild(alimentoBalanceado)
+      displayCarrito.appendChild(alimentoBalanceado)
     })
+   
 }
+const eliminar = (alimentID)=>{
+    const D = alimentos.find((aliment)=> aliment.id === alimentID)
+    const index = carrito.indexOf(D)
+    carrito.splice(index, 1)
+    freshCarrito()
+}
+ 
