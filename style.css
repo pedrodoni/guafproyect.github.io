@@ -216,7 +216,10 @@ button{
   box-shadow: 0.2rem 0.2rem 1.2rem rgb(0, 0, 0);
 }
 #dscrp button svg{
-  margin: 20%;
+  margin: 10% 0% ;
 }
-
+#btnadoptar{
+  display: flex;
+  justify-content: center;
+}
 

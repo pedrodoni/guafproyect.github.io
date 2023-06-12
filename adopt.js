@@ -1,5 +1,18 @@
 const adoptar = document.getElementById("adopts")
 const tramite = document.getElementById("tramita")
+const contactar = document.getElementById("contactar")
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+contactar.addEventListener('click',()=>{
+    Swal.fire('Estaremos en contacto su numero en la fila es:',
+        `${getRandomInt(10)}`)
+    familia.length= 0
+    localStorage.setItem('familia', JSON.stringify(familia))
+    sumarFlia()
+
+    
+} )
 
 let familia = []
 
