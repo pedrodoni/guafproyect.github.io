@@ -80,6 +80,7 @@ linear-gradient(45deg, #833ab4, #fd1d1d)}
 #produAlimentos{
   display: flex;
   justify-content: center;
+  font-family: 'Geologica', sans-serif;
 }
 #AlimentosDiv img{
   width: 20rem;
@@ -128,6 +129,7 @@ button{
   justify-content: space-between;
   color: wheat;
   font-family: 'Geologica', sans-serif;
+  margin: 0% 3%;
   
 
 }
@@ -142,6 +144,7 @@ button{
 }
 .imageCart{
   width: 30%;
+  margin-top: 5px;
 }
 .delete{
   background-color: #d3d3d3;
@@ -157,3 +160,63 @@ button{
   margin: 5% 0% 5% 0%;
   
 }
+#adoptame{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image:linear-gradient(45deg, #833ab4, #fd1d1d);
+  margin: 5% 3% 5% 3%;
+  border-radius: 25% 10%;
+  color: #d3d3d3;
+  font-family: 'Geologica', sans-serif;
+  box-shadow: 0.4rem 0.4rem 0.4rem grey;
+}
+#adoptame img{
+  width: 20%;
+  margin: 2%;
+  border-radius: 50%;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgb(0, 0, 0);
+}
+.mascotaInModal{
+  width: 20%;
+  border-radius: 50%;
+  margin-left: 5%;
+  margin-top: 1%;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgb(0, 0, 0);
+}
+#dscrp{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: #d3d3d3;
+  margin: 7%;
+  background-image:linear-gradient(45deg, #833ab4, #fd1d1d);
+  border-radius: 10% 5%;
+  box-shadow: 0.4rem 0.4rem 0.4rem grey;
+}
+#dscrp h2{
+  font-size: 1.7rem;
+  margin-top: 7%;
+}
+#dscrp h3{
+  font-size: 1.2rem;
+  margin-top: 7.5%;
+  margin-right: 2%;
+}
+#dscrp h4{
+  margin: 2%;
+}
+#dscrp button{
+  background-image:linear-gradient(45deg, #833ab4, #fd1d1d);
+  margin-left: 45%;
+  margin-right: 45%;
+  width: 10%;
+  border-color: wheat;
+  border-radius: 50%;
+  box-shadow: 0.2rem 0.2rem 1.2rem rgb(0, 0, 0);
+}
+#dscrp button svg{
+  margin: 20%;
+}
+
+

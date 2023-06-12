@@ -6,6 +6,7 @@ const clearCart = document.getElementById("limpiar")
 const displayCarrito = document.getElementById("aparienciaCart")
 const total = document.getElementById("totalCart")
 const comprar = document.getElementById("alertEnvio")
+
 const alert= ()=>{
     Swal.fire(
         'Buena decision!',
@@ -13,6 +14,12 @@ const alert= ()=>{
         'success'
     )
 }
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'))
+        freshCarrito()
+    }
+})
 comprar.addEventListener('click',()=>{
     carrito.length = 0
     localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -22,6 +29,10 @@ comprar.addEventListener('click',()=>{
         width: 600,
         padding: '3em',
         color: '#FD1D1D',
+        imageUrl: 'https://i.pinimg.com/originals/af/8f/6c/af8f6c1b9db5b1da36069285ee82c402.gif', 
+        imageWidth: 400,
+        imageHeight: 266,
+        imageAlt: 'Perrito Triste',
       
       })
     
@@ -52,7 +63,7 @@ alimentos.forEach((alimento)=>{
     <p class="Precios">$${alimento.precio}</p> 
     <button id= "add${alimento.id}" class="botoncomprar btn btn-outline-light" onClick='alert();'>Comprar</button>
     </div>
-    </div>`
+    `
     contieneProductos.appendChild(alimentoBalanceado)
 
     const button = document.getElementById(`add${alimento.id}`)
@@ -106,8 +117,10 @@ const freshCarrito=()=>{
 const eliminar = (alimentID)=>{
     const D = alimentos.find((aliment)=> aliment.id === alimentID)
     const index = carrito.indexOf(D)
+   
     carrito.splice(index, 1)
     freshCarrito()
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
  
+/* -------------------------------------------------------------------------------------------------------------- */
