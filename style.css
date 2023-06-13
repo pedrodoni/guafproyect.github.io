@@ -83,6 +83,7 @@ linear-gradient(45deg, #833ab4, #fd1d1d)}
   display: flex;
   justify-content: center;
   font-family: 'Geologica', sans-serif;
+  flex-wrap: wrap;
 }
 #AlimentosDiv img{
   width: 20rem;
@@ -227,4 +228,15 @@ button{
 }
 .btn{
   font-family: 'Geologica', sans-serif;
+}
+
+@media only screen and (max-width: 768px) {
+  #adoptame img {
+    margin: 5%;
+    
+  }
+  #adoptame{
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
