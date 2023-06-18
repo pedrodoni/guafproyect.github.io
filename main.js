@@ -6,6 +6,9 @@ const clearCart = document.getElementById("limpiar")
 const displayCarrito = document.getElementById("aparienciaCart")
 const total = document.getElementById("totalCart")
 const comprar = document.getElementById("alertEnvio")
+const eliminarBUT = document.getElementById("eliminar(${aliment.id})")
+
+
 
 const alert= ()=>{
     Swal.fire(
@@ -19,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito = JSON.parse(localStorage.getItem('carrito'))
         freshCarrito()
     }
+
 })
 comprar.addEventListener('click',()=>{
     carrito.length = 0
@@ -51,41 +55,44 @@ clearCart.addEventListener('click',()=>{
       })
     
 })
+/* DIBUJO LOS PRODUCTOS DESDE ALIMENTOS.JSON */
+fetch('/alimentos.json')
+.then((response)=> response.json())
+.then((alimentos)=>{
+    alimentos.forEach((alimento)=>{ 
+        
+        let alimentoBalanceado = document.createElement("div");
+        alimentoBalanceado.setAttribute('id','AlimentosDiv')
+        alimentoBalanceado.innerHTML=`<div class= "cardCarro">
+        <img src="${alimento.imagen}" alt="${alimento.nombre}">
+        <div class="detalles-carro">
+        <p class="tituloAlimentos"> ${alimento.nombre}</p>
+        <p class="Precios">$${alimento.precio}</p> 
+        <button id= "add${alimento.id}" class="botoncomprar btn btn-outline-light" onClick='alert()'>Comprar</button>
+        </div>
+        `
+        contieneProductos.appendChild(alimentoBalanceado)
 
-alimentos.forEach((alimento)=>{
-    
-    let alimentoBalanceado = document.createElement("div");
-    alimentoBalanceado.setAttribute('id','AlimentosDiv')
-    alimentoBalanceado.innerHTML=`<div class= "cardCarro">
-    <img src="${alimento.imagen}" alt="${alimento.nombre}">
-    <div class="detalles-carro">
-    <p class="tituloAlimentos"> ${alimento.nombre}</p>
-    <p class="Precios">$${alimento.precio}</p> 
-    <button id= "add${alimento.id}" class="botoncomprar btn btn-outline-light" onClick='alert();'>Comprar</button>
-    </div>
-    `
-    contieneProductos.appendChild(alimentoBalanceado)
+        const button = document.getElementById(`add${alimento.id}`)
 
-    const button = document.getElementById(`add${alimento.id}`)
-
-    button.addEventListener('click',()=>{
-        addCarrito(alimento.id)
-    }
-    )
-    
+        button.addEventListener('click',()=>{
+            addCarrito(alimento.id)
+        }
+        )
+        const addCarrito = (alimentId) => {
+            const D = alimentos.find((aliment)=> aliment.id === alimentId)
+            carrito.push(D)
+            freshCarrito() 
+        }
+        
 })
-const addCarrito = (alimentId) => {
-    const D = alimentos.find((aliment)=> aliment.id === alimentId)
-    carrito.push(D)
-    freshCarrito()
-   
-    
-}
+})
+
+
+
 
 const freshCarrito=()=>{
     displayCarrito.innerHTML = ""
-
-
     carrito.forEach((aliment)=>{
 
 
@@ -97,7 +104,7 @@ const freshCarrito=()=>{
         <div class= "details"> <h3>${aliment.nombre}</h3>
         <h4>$${aliment.precio}</h4> 
         <h5>Cantidad: ${aliment.cantidad}</h5>
-        <button onclick= "eliminar(${aliment.id})" class="delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <button id= "eliminar(${aliment.id})" onclick= "eliminar(${aliment.id})" class="delete"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-off" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M3 3l18 18" />
         <path d="M4 7h3m4 0h9" />
@@ -113,14 +120,18 @@ const freshCarrito=()=>{
       localStorage.setItem('carrito', JSON.stringify(carrito))
     })
     total.innerText = carrito.reduce((acc, aliment)=> acc + aliment.precio, 0)
+    
 }
 const eliminar = (alimentID)=>{
-    const D = alimentos.find((aliment)=> aliment.id === alimentID)
+    localStorage.getItem('carrito')
+    const D = carrito.find((cart)=> cart.id === alimentID)
     const index = carrito.indexOf(D)
    
     carrito.splice(index, 1)
     freshCarrito()
     localStorage.setItem('carrito', JSON.stringify(carrito))
 }
+
+   
  
 /* -------------------------------------------------------------------------------------------------------------- */

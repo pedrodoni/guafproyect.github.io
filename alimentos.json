@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "nombre": "Guaf 10 kg",
+        "precio": 3500,
+        "imagen": "../images/guaf.png",
+        "cantidad": 1
+    },
+    {
+        "id": 2,
+        "nombre": "DogChow 10kg",
+        "precio": 6500,
+        "imagen": "../images/dogChow.png",
+        "cantidad": 1
+    },
+    {
+        "id": 3,
+        "nombre": "Dog Selection 10kg",
+        "precio": 7600,
+        "imagen": "../images/dogSelection.png",
+        "cantidad": 1
+    }
+]

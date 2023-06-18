@@ -240,3 +240,6 @@ button{
     flex-wrap: wrap;
   }
 }
+.input-group{
+ padding: 0% 20% 0% 20%;
+}

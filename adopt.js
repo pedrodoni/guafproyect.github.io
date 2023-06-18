@@ -1,9 +1,17 @@
 const adoptar = document.getElementById("adopts")
 const tramite = document.getElementById("tramita")
 const contactar = document.getElementById("contactar")
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('familia')){
+        familia = JSON.parse(localStorage.getItem('familia'))
+        sumarFlia()
+    }})
+
 contactar.addEventListener('click',()=>{
     Swal.fire('Estaremos en contacto su numero en la fila es:',
         `${getRandomInt(10)}`)
@@ -13,38 +21,47 @@ contactar.addEventListener('click',()=>{
 
     
 } )
-
+/* Declaro Array Carrito adopcion */
 let familia = []
 
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('familia')){
         familia = JSON.parse(localStorage.getItem('familia'))
-        sumarAFlia()
+       
     }
 })
+fetch('/adopcion.json')
+.then((response)=>response.json())
+.then((perros)=>{
+    perros.forEach((mascota)=>{ console.log(mascota)
+        let mascotas = document.createElement("div")
+        mascotas.setAttribute('id', 'adoptame')
+        mascotas.innerHTML=`<img src="${mascota.imagen}" alt="${mascota.id}">
+        <h3 id="gender">Genero: ${mascota.gender}</h3>
+        <h3 id="age">Edad: ${mascota.edad}</h3>
+        <button id= "adopt${mascota.id}" onClick='alertaFlia()' class="btn btn-outline-light">Solicitar mas Informacion</button>
+        `
+        adoptar.appendChild(mascotas)
 
-perros.forEach((mascota)=>{
-    let mascotas = document.createElement("div")
-    mascotas.setAttribute('id', 'adoptame')
-    mascotas.innerHTML=`<img src="${mascota.imagen}" alt="${mascota.id}">
-    <h3 id="gender">Especie: ${mascota.gender}</h3>
-    <h3 id="age">Edad: ${mascota.edad}</h3>
-    <button id= "adopt${mascota.id}" class="btn btn-outline-light">Solicitar mas Informacion</button>
-    `
-    adoptar.appendChild(mascotas)
-
-    const boton = document.getElementById(`adopt${mascota.id}`)
-    boton.addEventListener('click',()=>{
-        sumarAFlia(mascota.id)
+        const boton = document.getElementById(`adopt${mascota.id}`)
+        boton.addEventListener('click',()=>{
+            sumarAFlia(mascota.id)
+        })
+        const sumarAFlia = (perroId)=>{
+            const P = perros.find((perro)=>perro.id===perroId)
+            familia.push(P)
+            sumarFlia()
+        } 
     })
 })
 
-const sumarAFlia = (perroId)=>{
-    const P = perros.find((perro)=>perro.id===perroId)
-    familia.push(P)
-    sumarFlia()
-} 
-
+const alertaFlia=()=>{
+    Swal.fire(
+        'Te hara feliz? TE LO ASEGURO!',
+        '',
+        'success'
+      )
+}
 const sumarFlia=()=>{
     tramite.innerHTML = ""
 
@@ -73,7 +90,8 @@ const sumarFlia=()=>{
     })
 }
 const eliminar = (perroId)=>{
-    const P = perros.find((perro)=>perro.id===perroId)
+    localStorage.getItem('familia')
+    const P = familia.find((flia)=>flia.id===perroId)
     const index = familia.indexOf(P)
     familia.splice(index, 1)
     sumarFlia()
