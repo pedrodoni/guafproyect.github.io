@@ -1,6 +1,7 @@
 const adoptar = document.getElementById("adopts")
 const tramite = document.getElementById("tramita")
 const contactar = document.getElementById("contactar")
+DibujarCarrito()
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -14,7 +15,7 @@ function getRandomInt(max) {
 
 contactar.addEventListener('click',()=>{
     Swal.fire('Estaremos en contacto su numero en la fila es:',
-        `${getRandomInt(10)}`)
+        `${getRandomInt(20)}`)
     familia.length= 0
     localStorage.setItem('familia', JSON.stringify(familia))
     sumarFlia()
@@ -30,10 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
        
     }
 })
-fetch('/adopcion.json')
-.then((response)=>response.json())
-.then((perros)=>{
-    perros.forEach((mascota)=>{ console.log(mascota)
+async function DibujarCarrito(){
+const response = await fetch('/adopcion.json')
+const perros = await response.json ()
+
+
+    perros.forEach((mascota)=>{ 
         let mascotas = document.createElement("div")
         mascotas.setAttribute('id', 'adoptame')
         mascotas.innerHTML=`<img src="${mascota.imagen}" alt="${mascota.id}">
@@ -53,7 +56,7 @@ fetch('/adopcion.json')
             sumarFlia()
         } 
     })
-})
+}
 
 const alertaFlia=()=>{
     Swal.fire(
