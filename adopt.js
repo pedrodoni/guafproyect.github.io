@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 })
 async function DibujarCarrito(){
-const response = await fetch('./adopcion.json')
+const response = await fetch('../json/adopcion.json')
 const perros = await response.json ()
 
 
