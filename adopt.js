@@ -14,12 +14,23 @@ function getRandomInt(max) {
     }})
 
 contactar.addEventListener('click',()=>{
-    Swal.fire('Estaremos en contacto su numero en la fila es:',
-        `${getRandomInt(20)}`)
+    if(JSON.parse(localStorage.getItem('tuMail')) === null){
+        Swal.fire({
+            icon: 'error',
+            title: 'Guaf?...',
+            text: 'Debes registrar tu email antes!',
+            footer: '<a href="../index.html">Registra tu Mail aqui</a>'
+          })
+    }
+    else{
+    Swal.fire
+    (`Estaremos en contacto a su mail ${JSON.parse(localStorage.getItem('tuMail'))}, su numero en la fila es:`,
+        `${getRandomInt(20)} 
+        `)
     familia.length= 0
     localStorage.setItem('familia', JSON.stringify(familia))
     sumarFlia()
-
+    }
     
 } )
 /* Declaro Array Carrito adopcion */
