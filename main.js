@@ -56,7 +56,7 @@ clearCart.addEventListener('click',()=>{
     
 })
 /* DIBUJO LOS PRODUCTOS DESDE ALIMENTOS.JSON */
-fetch('/alimentos.json')
+fetch('./alimentos.json')
 .then((response)=> response.json())
 .then((alimentos)=>{
     alimentos.forEach((alimento)=>{ 
