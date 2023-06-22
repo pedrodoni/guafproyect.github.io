@@ -8,6 +8,45 @@ const total = document.getElementById("totalCart")
 const comprar = document.getElementById("alertEnvio")
 const eliminarBUT = document.getElementById("eliminar(${aliment.id})")
 
+/* DIBUJO LOS PRODUCTOS DESDE ALIMENTOS.JSON */
+fetch('../json/alimentos.json')
+.then((response)=> response.json())
+.then((dataAlimentos)=>{
+    dibujarproductos(dataAlimentos)
+})
+
+const dibujarproductos = (dataAlimentos)=>{
+    alimentos = dataAlimentos ;
+    alimentos.forEach((alimento)=>{ 
+        
+        let alimentoBalanceado = document.createElement("div");
+        alimentoBalanceado.setAttribute('id','AlimentosDiv')
+        alimentoBalanceado.innerHTML=`<div class= "cardCarro">
+        <img src="${alimento.imagen}" alt="${alimento.nombre}">
+        <div class="detalles-carro">
+        <p class="tituloAlimentos"> ${alimento.nombre}</p>
+        <p class="Precios">$${alimento.precio}</p> 
+        <button id= "add${alimento.id}" class="botoncomprar btn btn-outline-light" onClick='alert()'>Comprar</button>
+        </div>
+        `
+        contieneProductos.appendChild(alimentoBalanceado)
+
+        const button = document.getElementById(`add${alimento.id}`)
+         
+        button.addEventListener('click',()=>{
+            addCarrito(alimento.id)
+        }
+        )
+        
+})
+}
+
+const addCarrito = (alimentId) => {
+    const D = alimentos.find((aliment)=> aliment.id === alimentId)
+    carrito.push(D)
+    freshCarrito() 
+}
+
 
 
 const alert= ()=>{
@@ -55,38 +94,8 @@ clearCart.addEventListener('click',()=>{
       })
     
 })
-/* DIBUJO LOS PRODUCTOS DESDE ALIMENTOS.JSON */
-fetch('../json/alimentos.json')
-.then((response)=> response.json())
-.then((alimentos)=>{
-    alimentos.forEach((alimento)=>{ 
-        
-        let alimentoBalanceado = document.createElement("div");
-        alimentoBalanceado.setAttribute('id','AlimentosDiv')
-        alimentoBalanceado.innerHTML=`<div class= "cardCarro">
-        <img src="${alimento.imagen}" alt="${alimento.nombre}">
-        <div class="detalles-carro">
-        <p class="tituloAlimentos"> ${alimento.nombre}</p>
-        <p class="Precios">$${alimento.precio}</p> 
-        <button id= "add${alimento.id}" class="botoncomprar btn btn-outline-light" onClick='alert()'>Comprar</button>
-        </div>
-        `
-        contieneProductos.appendChild(alimentoBalanceado)
 
-        const button = document.getElementById(`add${alimento.id}`)
 
-        button.addEventListener('click',()=>{
-            addCarrito(alimento.id)
-        }
-        )
-        const addCarrito = (alimentId) => {
-            const D = alimentos.find((aliment)=> aliment.id === alimentId)
-            carrito.push(D)
-            freshCarrito() 
-        }
-        
-})
-})
 
 
 
