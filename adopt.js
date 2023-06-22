@@ -1,7 +1,12 @@
 const adoptar = document.getElementById("adopts")
 const tramite = document.getElementById("tramita")
 const contactar = document.getElementById("contactar")
-DibujarCarrito()
+
+DibujarFLia()
+
+
+
+
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -42,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
     }
 })
-async function DibujarCarrito(){
+async function DibujarFLia(){
 const response = await fetch('../json/adopcion.json')
 const perros = await response.json ()
 
@@ -68,6 +73,7 @@ const perros = await response.json ()
         } 
     })
 }
+
 
 const alertaFlia=()=>{
     Swal.fire(
