@@ -7,17 +7,18 @@ DibujarFLia()
 
 
 
-
+/* Genera numero random*/
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-
+/* Cargar Archivo y display Flia */
   document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('familia')){
         familia = JSON.parse(localStorage.getItem('familia'))
         sumarFlia()
     }})
-
+/* ///////////////////////////////////////////////////////////
+ Seguir con el tramite  y muestra elemento capturado del input en caso de tenerlo sino te pide registrarlo*/
 contactar.addEventListener('click',()=>{
     if(JSON.parse(localStorage.getItem('tuMail')) === null){
         Swal.fire({
@@ -47,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
     }
 })
+/* Funcion asincrona de display flia */
 async function DibujarFLia(){
 const response = await fetch('../json/adopcion.json')
 const perros = await response.json ()
@@ -74,7 +76,7 @@ const perros = await response.json ()
     })
 }
 
-
+/* Alert de aniadir a flia */
 const alertaFlia=()=>{
     Swal.fire(
         'Te hara feliz? TE LO ASEGURO!',
@@ -82,6 +84,7 @@ const alertaFlia=()=>{
         'success'
       )
 }
+/* Display Flia A Sumar con sus specs */
 const sumarFlia=()=>{
     tramite.innerHTML = ""
 
@@ -109,6 +112,7 @@ const sumarFlia=()=>{
         localStorage.setItem('familia', JSON.stringify(familia))
     })
 }
+/* Declaro Eliminar */
 const eliminar = (perroId)=>{
     localStorage.getItem('familia')
     const P = familia.find((flia)=>flia.id===perroId)
@@ -119,7 +123,7 @@ const eliminar = (perroId)=>{
 
     
 }
-
+/* Alert de perro triste */
 const alertTriste=()=>{
     Swal.fire(
         'Mala decision!',

@@ -1,8 +1,12 @@
 const mailButton = document.querySelector('#emailSet')
 const acaTeContactamos = document.getElementById('teContactaremos')
-
+/* Asigno evento al boton de registrar email */
 mailButton.addEventListener('click', pushEmail)
 
+
+
+
+/* Alerta de Todo bien */
 const alertaSuccess=()=>{
     Swal.fire(
         'Excelente!',
@@ -10,6 +14,7 @@ const alertaSuccess=()=>{
         'success'
       )
 }
+/* Seteamos el Email en el LS */
 function pushEmail(){
   
     const Mail = document.querySelector('#exampleInputEmail1').value;
@@ -20,6 +25,7 @@ function pushEmail(){
     
     
 }
+/* Declaro el mail vacio */
 const tuEmail = []
 
 

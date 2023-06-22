@@ -40,7 +40,8 @@ const dibujarproductos = (dataAlimentos)=>{
         
 })
 }
-
+/* ----------------------------------- */
+/* Boton de añadir al carrito */
 const addCarrito = (alimentId) => {
     const D = alimentos.find((aliment)=> aliment.id === alimentId)
     carrito.push(D)
@@ -48,7 +49,7 @@ const addCarrito = (alimentId) => {
 }
 
 
-
+/* Alerta de success cuando aniadis al carrito */
 const alert= ()=>{
     Swal.fire(
         'Buena decision!',
@@ -56,6 +57,7 @@ const alert= ()=>{
         'success'
     )
 }
+/* Dibuja el carrito cuando carga el archivo */
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('carrito')){
         carrito = JSON.parse(localStorage.getItem('carrito'))
@@ -63,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 })
+/* Asigo evento al Boton de comprar con SWalert Gif */
 comprar.addEventListener('click',()=>{
     carrito.length = 0
     localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -80,6 +83,7 @@ comprar.addEventListener('click',()=>{
       })
     
 })
+/* Asigno evento al boton de Vaciar carrito */
 clearCart.addEventListener('click',()=>{
     carrito.length = 0
     localStorage.setItem('carrito', JSON.stringify(carrito))
@@ -99,7 +103,7 @@ clearCart.addEventListener('click',()=>{
 
 
 
-
+/* Declaro el display de carrito en el modal */
 const freshCarrito=()=>{
     displayCarrito.innerHTML = ""
     carrito.forEach((aliment)=>{
@@ -131,6 +135,7 @@ const freshCarrito=()=>{
     total.innerText = carrito.reduce((acc, aliment)=> acc + aliment.precio, 0)
     
 }
+/* Declaro el boton de eliminar del Carrito */
 const eliminar = (alimentID)=>{
     localStorage.getItem('carrito')
     const D = carrito.find((cart)=> cart.id === alimentID)
